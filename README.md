@@ -11,4 +11,4 @@ I'd like to see a list of bookmarks
 
 # Domain Model Diagram
 
-![Sequence Diagram]()
+![Sequence Diagram](https://raw.githubusercontent.com/frodri13/Bookmark-Challenge/main/img/diagram.jpg)
