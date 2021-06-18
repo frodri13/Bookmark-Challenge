@@ -5,7 +5,7 @@ RSpec.describe Bookmark do
 	describe '.all' do
 		it 'returns all bookmarks' do
 			connection = PG.connect(dbname: 'bookmark_manager_test')
-			
+
 			bookmark = Bookmark.create(url: 'http://www.makersacademy.com', title: "Makers Academy")
 			Bookmark.create(url: 'http://www.destroyallsoftware.com', title: "Destroy All Software")
 			Bookmark.create(url: 'http://www.google.com', title: "Google")
@@ -29,6 +29,18 @@ RSpec.describe Bookmark do
 			expect(bookmark.title).to eq('Test Bookmark')
 			expect(bookmark).to be_a Bookmark
 			expect(bookmark.id).to eq persisted_data.first['id']
+		end
+	end
+
+	describe '.delete' do
+		it 'deltes a bookmark' do
+			# connection = PG.connect(dbname: 'bookmark_manager_test')
+			bookmark = Bookmark.create(title: 'Makers Academy', url: 'http://www.makersacademy.com')
+			
+			Bookmark.delete(id: bookmark.id)
+		
+
+			expect(Bookmark.all.length).to eq 0
 		end
 	end
 end
